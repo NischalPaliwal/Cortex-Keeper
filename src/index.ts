@@ -9,7 +9,7 @@ const app = express();
 dotenv.config();
 
 (async () => {
-    await mongoose.connect("mongodb+srv://paliwalnischal:nischalpaliwal7@second-brain-project.sk26q.mongodb.net/cortex-keeper").
+    await mongoose.connect("mongodb://localhost:27017/db").
     then(() => {
         console.log("Connected to MongoDB");
     }).catch((error) => {

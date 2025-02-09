@@ -2,11 +2,15 @@ import { Request, Response } from "express";
 import { z } from "zod";
 import { contentModel } from "../db/schema";
 
+const tagSchema = z.object({
+    title: z.string(),
+});
+
 const contentSchema = z.object({
     link: z.string().url(),
     type: z.enum(['image', 'video', 'article', 'audio']),
     title: z.string().min(3),
-    tags: z.array(z.string())
+    tags: z.array(tagSchema)
 })
 
 export const createContent = async (req: Request, res: Response) => {
@@ -16,7 +20,8 @@ export const createContent = async (req: Request, res: Response) => {
             link: link,
             type: type,
             title: title,
-            tags: tags
+            tags: tags,
+            userId: req.user._id
         });
 
         return res.status(201).json(content);

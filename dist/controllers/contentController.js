@@ -12,11 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteContent = exports.getContent = exports.createContent = void 0;
 const zod_1 = require("zod");
 const schema_1 = require("../db/schema");
+const tagSchema = zod_1.z.object({
+    title: zod_1.z.string(),
+});
 const contentSchema = zod_1.z.object({
     link: zod_1.z.string().url(),
     type: zod_1.z.enum(['image', 'video', 'article', 'audio']),
     title: zod_1.z.string().min(3),
-    tags: zod_1.z.array(zod_1.z.string())
+    tags: zod_1.z.array(tagSchema)
 });
 const createContent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -25,11 +28,13 @@ const createContent = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             link: link,
             type: type,
             title: title,
-            tags: tags
+            tags: tags,
+            userId: req.user._id
         });
         return res.status(201).json(content);
     }
     catch (error) {
+        console.log(error);
         return res.status(400).json({
             message: 'Invalid input!'
         });

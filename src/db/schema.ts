@@ -20,6 +20,14 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+const tagSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+        unique: true
+    }
+});
+
 const contentSchema = new mongoose.Schema({
     link: {
         type: String,
@@ -34,24 +42,11 @@ const contentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    tags: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Tag'
-        }
-    ],
+    tags: [tagSchema],
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    }
-});
-
-const tagSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-        unique: true
     }
 });
 

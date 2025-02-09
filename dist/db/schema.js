@@ -32,6 +32,13 @@ const userSchema = new mongoose_1.default.Schema({
         required: true
     }
 });
+const tagSchema = new mongoose_1.default.Schema({
+    title: {
+        type: String,
+        required: true,
+        unique: true
+    }
+});
 const contentSchema = new mongoose_1.default.Schema({
     link: {
         type: String,
@@ -46,23 +53,11 @@ const contentSchema = new mongoose_1.default.Schema({
         type: String,
         required: true
     },
-    tags: [
-        {
-            type: mongoose_1.default.Schema.Types.ObjectId,
-            ref: 'Tag'
-        }
-    ],
+    tags: [tagSchema],
     userId: {
         type: mongoose_1.default.Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    }
-});
-const tagSchema = new mongoose_1.default.Schema({
-    title: {
-        type: String,
-        required: true,
-        unique: true
     }
 });
 const linkSchema = new mongoose_1.default.Schema({

@@ -20,6 +20,7 @@ const contentRoutes_1 = __importDefault(require("./routes/contentRoutes"));
 const shareRoutes_1 = __importDefault(require("./routes/shareRoutes"));
 const app = (0, express_1.default)();
 dotenv_1.default.config();
+app.use(express_1.default.json());
 (() => __awaiter(void 0, void 0, void 0, function* () {
     yield mongoose_1.default.connect("mongodb://localhost:27017/db").
         then(() => {

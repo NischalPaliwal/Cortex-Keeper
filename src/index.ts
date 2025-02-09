@@ -7,6 +7,7 @@ import shareRoutes from "./routes/shareRoutes";
 
 const app = express();
 dotenv.config();
+app.use(express.json());
 
 (async () => {
     await mongoose.connect("mongodb://localhost:27017/db").

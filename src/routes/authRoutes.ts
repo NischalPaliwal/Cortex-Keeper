@@ -1,12 +1,11 @@
 import express from "express";
 import { signup, signin } from "../controllers/authController";
-import { authMiddleware } from "../middleware/authMiddleware";
 
 const router = express.Router();
 
 // @ts-ignore
-router.post('/signup', authMiddleware, signup);
+router.post('/signup', signup);
 // @ts-ignore
-router.post('/signin', authMiddleware, signin);
+router.post('/signin', signin);
 
 export default router;

@@ -12,5 +12,5 @@ router.post("/create", authMiddleware_1.authMiddleware, contentController_1.crea
 //@ts-ignore
 router.get("/get", authMiddleware_1.authMiddleware, contentController_1.getContent);
 //@ts-ignore
-router.delete("/delete/:id", authMiddleware_1.authMiddleware, contentController_1.deleteContent);
+router.delete("/delete", authMiddleware_1.authMiddleware, contentController_1.deleteContent);
 exports.default = router;

@@ -9,6 +9,6 @@ router.post("/create", authMiddleware, createContent);
 //@ts-ignore
 router.get("/get", authMiddleware, getContent);
 //@ts-ignore
-router.delete("/delete/:id", authMiddleware, deleteContent);
+router.delete("/delete", authMiddleware, deleteContent);
 
 export default router;

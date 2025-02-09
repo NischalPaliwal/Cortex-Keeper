@@ -52,7 +52,7 @@ export const getContent = async (req: Request, res: Response) => {
 export const deleteContent = async (req: Request, res: Response) => {
     try {
         await contentModel.deleteOne({
-            _id: req.params.id,
+            _id: req.query.id,
             userId: req.user._id
         });
 

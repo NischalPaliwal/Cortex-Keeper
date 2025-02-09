@@ -49,7 +49,6 @@ const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return res.status(201).json({ token, user });
     }
     catch (error) {
-        console.log(error);
         return res.status(400).json({
             message: 'Invalid input!'
         });

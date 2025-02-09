@@ -34,7 +34,6 @@ const createContent = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         return res.status(201).json(content);
     }
     catch (error) {
-        console.log(error);
         return res.status(400).json({
             message: 'Invalid input!'
         });
@@ -61,7 +60,7 @@ exports.getContent = getContent;
 const deleteContent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield schema_1.contentModel.deleteOne({
-            _id: req.params.id,
+            _id: req.query.id,
             userId: req.user._id
         });
         return res.status(204).send();

@@ -10,7 +10,7 @@ function App() {
     <div className="min-h-screen w-full items-center justify-center bg-slate-100">
       {/* SideBar */}
       { isExpanded && <ESidebar onclick={() => setIsExpanded(false)} /> }
-      { !isExpanded && <CSidebar /> }
+      { !isExpanded && <CSidebar onclick={() => setIsExpanded(true)} /> }
     </div>
   )
 }
